@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnh4gtildw180"]
+
+[ext_resource type="Theme" uid="uid://djqxggbyxn27d" path="res://internal/resources/themes/default_menu_theme.tres" id="1_mxvei"]
+[ext_resource type="Script" path="res://internal/code/menus/settings/settings.gd" id="2_xkrqg"]
+[ext_resource type="PackedScene" uid="uid://bixuvnj0ukhsj" path="res://internal/code/code_resources/button_sound.tscn" id="3_243cx"]
+
+[node name="Settings" type="PanelContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 54.0
+offset_right = -72.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mxvei")
+script = ExtResource("2_xkrqg")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Settings"
+
+[node name="Back" parent="." instance=ExtResource("3_243cx")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
