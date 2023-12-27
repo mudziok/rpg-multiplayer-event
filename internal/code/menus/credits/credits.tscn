@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqaxx0vlmj3lc"]
+
+[ext_resource type="Script" path="res://internal/code/menus/credits/credits.gd" id="1_qqjcf"]
+[ext_resource type="PackedScene" uid="uid://bap5x6kis6j2a" path="res://addons/simplelicense/GUI/LicenseGUI.tscn" id="2_svgdd"]
+[ext_resource type="PackedScene" uid="uid://bixuvnj0ukhsj" path="res://internal/code/code_resources/button_sound.tscn" id="3_xcbwa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dp4e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmmq5"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[node name="Credits" type="PanelContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qqjcf")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Credits"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+theme_override_constants/side_margin = 20
+
+[node name="Authors" type="PanelContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Authors"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_6dp4e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vmmq5")
+bbcode_enabled = true
+text = "[center][b][font_size=30]Great game title[/font_size][/b]
+
+[b]Day 1[/b]
+Wovri - template menu system
+
+[b]Day 2[/b]"
+scroll_following = true
+selection_enabled = true
+
+[node name="License" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_bottom = 40
+
+[node name="LicenseGUI" parent="TabContainer/License" instance=ExtResource("2_svgdd")]
+layout_mode = 2
+load_locations = Array[String](["res://internal/resources/licenses/", "res://addons/simplelicense/mod_example/licenses/"])
+
+[node name="Back" parent="." instance=ExtResource("3_xcbwa")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

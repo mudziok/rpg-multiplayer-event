@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LicenseLink" load_steps=3 format=3 uid="uid://eujl1pm0mma4"]
+
+[ext_resource type="FontFile" uid="uid://5y7ae87dl4su" path="res://external/fonts/joystix/joystix monospace.otf" id="1_010t2"]
+[ext_resource type="Script" path="res://addons/simplelicense/api/LicenseLink.gd" id="2_7iv6p"]
+
+[resource]
+script = ExtResource("2_7iv6p")
+link_files = Array[Resource]([ExtResource("1_010t2")])
+link_dirs = Array[Resource]([])
+link_paths = []
+componet_name = "Joystix monospace font"
+extra = "Source: https://www.1001fonts.com/joystix-font.html"
+license_identifier = "Free for commercial use "
+copyright = Array[String](["Raymond Larabie"])

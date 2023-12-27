@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://dtndg5oftntka"
+=======
+uid="uid://c4ww6y7vlyldn"
+>>>>>>> 0faf1f9 (Some minor project settings changes + Add buttons sounds 🔊)
+path="res://.godot/imported/CALENDAR.png-f5faf230507c7420beca27631429f205.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://CALENDAR.png"
+dest_files=["res://.godot/imported/CALENDAR.png-f5faf230507c7420beca27631429f205.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

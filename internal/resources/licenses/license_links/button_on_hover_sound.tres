@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LicenseLink" load_steps=3 format=3 uid="uid://cqsq52ihtykgt"]
+
+[ext_resource type="AudioStream" uid="uid://b4cinvi8q24v2" path="res://external/sound/sfx/button_sounds/on_hover.wav" id="1_b2bb4"]
+[ext_resource type="Script" path="res://addons/simplelicense/api/LicenseLink.gd" id="2_6bjpj"]
+
+[resource]
+script = ExtResource("2_6bjpj")
+link_files = Array[Resource]([ExtResource("1_b2bb4")])
+link_dirs = Array[Resource]([])
+link_paths = []
+componet_name = "WHOOSH REVERB"
+extra = "Source: https://freesound.org/people/SkyernAklea/sounds/430075/"
+license_identifier = "Attribution 4.0"
+copyright = Array[String](["2018, SkyernAklea"])

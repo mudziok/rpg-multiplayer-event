@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bixuvnj0ukhsj"]
+
+[ext_resource type="Script" path="res://internal/code/code_resources/button_sound.gd" id="1_adg20"]
+[ext_resource type="AudioStream" uid="uid://6xeiqdlvxii4" path="res://external/sound/sfx/button_sounds/on_click.wav" id="2_n14at"]
+[ext_resource type="AudioStream" uid="uid://b4cinvi8q24v2" path="res://external/sound/sfx/button_sounds/on_hover.wav" id="3_nhlgx"]
+
+[node name="ButtonSound" type="Button"]
+custom_minimum_size = Vector2(30, 10)
+text = "Example"
+script = ExtResource("1_adg20")
+on_click_sound = ExtResource("2_n14at")
+on_hover_sound = ExtResource("3_nhlgx")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://lhd57g2xicel"]
+
+[ext_resource type="Script" path="res://internal/code/globals/singletones/pop_up_display.gd" id="1_g7r61"]
+
+[node name="SingletonePopUps" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_g7r61")
