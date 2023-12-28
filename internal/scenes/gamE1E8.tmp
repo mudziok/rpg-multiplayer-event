@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://bni63f1mm1tvg"]
+
+[ext_resource type="Script" path="res://internal/camera/Camera.gd" id="1_8n1go"]
+[ext_resource type="PackedScene" uid="uid://cnwfhrln1okcl" path="res://internal/skier/skier.tscn" id="1_sdxcd"]
+[ext_resource type="Script" path="res://internal/kite/Kite.gd" id="2_mmquk"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_3nwtj"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjul4"]
+size = Vector3(8, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mndv7"]
+size = Vector3(8, 1, 8)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87lox"]
+sky_top_color = Color(0.443137, 0.694118, 0.905882, 1)
+sky_horizon_color = Color(0.905882, 0.909804, 0.913725, 1)
+
+[sub_resource type="Sky" id="Sky_j8r5l"]
+sky_material = SubResource("ProceduralSkyMaterial_87lox")
+
+[sub_resource type="Environment" id="Environment_y0a4g"]
+background_mode = 2
+sky = SubResource("Sky_j8r5l")
+ambient_light_source = 3
+ambient_light_color = Color(0.878431, 0.866667, 0.854902, 1)
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 15.0
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -4)
+script = ExtResource("1_8n1go")
+
+[node name="Kite" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.24537e-07, 0, -6)
+mesh = SubResource("PrismMesh_3nwtj")
+skeleton = NodePath("../..")
+script = ExtResource("2_mmquk")
+
+[node name="HillSlide" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HillSlide"]
+mesh = SubResource("BoxMesh_xjul4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HillSlide"]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="HillSlide2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HillSlide2"]
+mesh = SubResource("BoxMesh_xjul4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HillSlide2"]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="HillSlide3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HillSlide3"]
+mesh = SubResource("BoxMesh_xjul4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HillSlide3"]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="HillSlide4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HillSlide4"]
+mesh = SubResource("BoxMesh_xjul4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HillSlide4"]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="HillSlide5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HillSlide5"]
+mesh = SubResource("BoxMesh_xjul4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HillSlide5"]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="Skier" parent="." instance=ExtResource("1_sdxcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Skier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+remote_path = NodePath("../../Camera")
+update_rotation = false
+update_scale = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y0a4g")
+
+[connection signal="left_mouse_button_down" from="Camera" to="Skier" method="set_is_clinching"]
+[connection signal="raycast_move" from="Camera" to="Skier" method="set_attractor"]

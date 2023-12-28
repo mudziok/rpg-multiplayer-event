@@ -23,8 +23,9 @@ driver/mix_rate.web=44100
 
 [autoload]
 
-GlobalSounds="*res://internal/code/globals/singletones/global_sounds.tscn"
-PopUpDisplay="*res://internal/code/globals/singletones/pop_up_display.tscn"
+GlobalSounds="*res://internal/code/globals/singletons/global_sounds.tscn"
+PopUpDisplay="*res://internal/code/globals/singletons/pop_up_display.tscn"
+HillSingleton="*res://internal/code/globals/singletons/hill_singleton.gd"
 
 [display]
 
@@ -51,3 +52,14 @@ textures/vram_compression/import_s3tc_bptc=true
 textures/lossless_compression/force_png=true
 anti_aliasing/quality/screen_space_aa=1
 2d/snap/snap_2d_transforms_to_pixel=true
+
+[shader_globals]
+
+x_axis={
+"type": "float",
+"value": 0.0
+}
+y_axis={
+"type": "float",
+"value": 0.0
+}

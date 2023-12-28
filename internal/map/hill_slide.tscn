@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2vropeusyf85"]
+
+[ext_resource type="Material" uid="uid://n4jmgqc1slrx" path="res://internal/map/hill_material.tres" id="1_vm8c6"]
+[ext_resource type="ArrayMesh" uid="uid://dd13b10ko63n4" path="res://internal/resources/models/placeholder_ground.obj" id="2_n1fja"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mndv7"]
+size = Vector3(8, 1, 8)
+
+[node name="HillSlide" type="StaticBody3D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mndv7")
+
+[node name="PlaceholderGround" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+material_override = ExtResource("1_vm8c6")
+mesh = ExtResource("2_n1fja")

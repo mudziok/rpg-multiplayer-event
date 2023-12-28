@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://n4jmgqc1slrx"]
+
+[ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="1_srj5f"]
+[ext_resource type="Texture2D" uid="uid://b6tsytly1tche" path="res://internal/resources/textures/snow.jpg" id="2_5wr7i"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_srj5f")
+shader_parameter/image_texture = ExtResource("2_5wr7i")
