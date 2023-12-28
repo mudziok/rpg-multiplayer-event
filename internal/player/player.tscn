@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d00kxn8ke7auy"]
 
-[ext_resource type="PackedScene" uid="uid://cnwfhrln1okcl" path="res://internal/skier/skier.tscn" id="1_m51ag"]
 [ext_resource type="Script" path="res://internal/player/player.gd" id="1_mhskb"]
+[ext_resource type="PackedScene" uid="uid://cnwfhrln1okcl" path="res://internal/surfer/surfer.tscn" id="2_3c4ea"]
 [ext_resource type="Script" path="res://internal/camera/Camera.gd" id="2_b0qfh"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_3nwtj"]
@@ -10,7 +10,7 @@ size = Vector3(1, 1, 0.1)
 [node name="Player" type="Node3D"]
 script = ExtResource("1_mhskb")
 
-[node name="Skier" parent="." instance=ExtResource("1_m51ag")]
+[node name="Surfer" parent="." instance=ExtResource("2_3c4ea")]
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -3)
@@ -21,6 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7053e-13, 2, 3)
 mesh = SubResource("PrismMesh_3nwtj")
 skeleton = NodePath("../..")
 
-[connection signal="left_mouse_button_down" from="." to="Skier" method="set_is_clinching"]
+[connection signal="left_mouse_button_down" from="." to="Surfer" method="set_is_clinching"]
 [connection signal="left_mouse_button_down" from="." to="Camera" method="_on_player_left_mouse_button_down"]
-[connection signal="raycast_move" from="." to="Skier" method="set_attractor"]
+[connection signal="raycast_move" from="." to="Surfer" method="set_attractor"]

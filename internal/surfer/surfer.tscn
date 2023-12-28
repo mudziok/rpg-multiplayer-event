@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnwfhrln1okcl"]
 
-[ext_resource type="Script" path="res://internal/skier/skier.gd" id="1_e2pjg"]
+[ext_resource type="Script" path="res://internal/surfer/surfer.gd" id="1_e2pjg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgpuv"]
 radius = 0.25

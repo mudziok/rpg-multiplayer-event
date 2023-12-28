@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const ACCELERATION_Z = 3.0
-const DEACCELERATION_Z = ACCELERATION_Z
+const DEACCELERATION_Z = ACCELERATION_Z * 2.0
 
 const ACCELERATION_X = 10.0
 const ACCELERATION_Y = 20.0
@@ -26,19 +26,21 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	# speedup when on the ground
 	if is_on_floor():
-		velocity.z += ACCELERATION_Z * delta
-	else:
-		var min_velocity = min(velocity.z, 1.0)
-		velocity.z = move_toward(velocity.z, min_velocity, DEACCELERATION_Z * delta)
+		velocity.z += ACCELERATION_Z * delta	
 	
 	var position_difference_x = attractor.x - global_position.x
 	
 	velocity.x = move_toward(velocity.x, position_difference_x, ACCELERATION_X)
 	
+	# slow down when flying on the kite
 	if is_clinching:
 		var position_difference_y = attractor.y - global_position.y
 		velocity.y = move_toward(velocity.y, position_difference_y, ACCELERATION_Y)
+		
+		var min_velocity = min(velocity.z, 1.0)
+		velocity.z = move_toward(velocity.z, min_velocity, DEACCELERATION_Z * delta)
 	
 	rotation.y = get_angle_to_attractor()
 	
