@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bni63f1mm1tvg"]
+[gd_scene load_steps=6 format=3 uid="uid://bni63f1mm1tvg"]
 
 [ext_resource type="PackedScene" uid="uid://d00kxn8ke7auy" path="res://internal/player/player.tscn" id="1_4yxr6"]
-[ext_resource type="PackedScene" uid="uid://d2vropeusyf85" path="res://internal/map/hill_slide.tscn" id="1_7y37h"]
-[ext_resource type="PackedScene" uid="uid://mp1usdhawbmo" path="res://internal/map/hill_slide_tree.tscn" id="3_vhxip"]
+[ext_resource type="PackedScene" uid="uid://bj6k2nxidjk16" path="res://internal/map/controler/map_controler.tscn" id="4_agi44"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87lox"]
 sky_top_color = Color(0.443137, 0.694118, 0.905882, 1)
@@ -24,37 +23,11 @@ ambient_light_energy = 1.69
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y0a4g")
 
-[node name="HillSlide" parent="." instance=ExtResource("1_7y37h")]
-
-[node name="HillSlide2" parent="." instance=ExtResource("1_7y37h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-
-[node name="HillSlide3" parent="." instance=ExtResource("3_vhxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
-
-[node name="HillSlide11" parent="." instance=ExtResource("3_vhxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 87)
-
-[node name="HillSlide12" parent="." instance=ExtResource("3_vhxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79)
-
-[node name="HillSlide13" parent="." instance=ExtResource("3_vhxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71)
-
-[node name="HillSlide4" parent="." instance=ExtResource("1_7y37h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
-
-[node name="HillSlide5" parent="." instance=ExtResource("1_7y37h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
-
-[node name="HillSlide7" parent="." instance=ExtResource("1_7y37h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55)
-
-[node name="HillSlide8" parent="." instance=ExtResource("1_7y37h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 63)
-
 [node name="Player" parent="." instance=ExtResource("1_4yxr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="HillSlide6" parent="." instance=ExtResource("3_vhxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 44)
+[node name="map_controler" parent="." instance=ExtResource("4_agi44")]
+
+[connection signal="provide_position" from="Player/Surfer" to="map_controler" method="_on_surfer_provide_position"]
+
+[editable path="Player"]

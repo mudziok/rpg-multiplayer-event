@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal provide_position(position :Vector3)
+
 const ACCELERATION_Z = 3.0
 const DEACCELERATION_Z = ACCELERATION_Z * 2.0
 
@@ -42,6 +44,8 @@ func _physics_process(delta):
 		var min_velocity = min(velocity.z, 1.0)
 		velocity.z = move_toward(velocity.z, min_velocity, DEACCELERATION_Z * delta)
 	
+	
 	rotation.y = get_angle_to_attractor()
 	
 	move_and_slide()
+	emit_signal("provide_position",position)

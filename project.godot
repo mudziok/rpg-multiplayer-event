@@ -33,6 +33,10 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="name_missing"
+
 [filesystem]
 
 import/blender/enabled=false

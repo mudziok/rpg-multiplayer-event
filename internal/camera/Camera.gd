@@ -5,6 +5,7 @@ const MAX_FOLLOW_OFFSET = 0.3
 const CAMERA_FOLLOW_SPEED = 4.0
 
 var current_fov: float = 70.0
+@export var surfer : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,7 @@ func follow_point(cursor: Vector2, delta: float):
 	var new_h_offset = (global_position.x - cursor.x) * MAX_FOLLOW_OFFSET
 	var new_v_offset = (cursor.y - global_position.y) * MAX_FOLLOW_OFFSET
 	
+	global_position = surfer.global_position - Vector3.FORWARD*3 + Vector3.UP * 2
 	h_offset = lerp(h_offset, new_h_offset, delta * CAMERA_FOLLOW_SPEED)
 	v_offset = lerp(v_offset, new_v_offset, delta * CAMERA_FOLLOW_SPEED)
 

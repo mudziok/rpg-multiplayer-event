@@ -7,7 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bpwdx5c2pbwu0" path="res://internal/resources/models/placeholder_tree.obj" id="5_1bx73"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mndv7"]
-size = Vector3(8, 1, 8)
+size = Vector3(100, 1, 8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s2vbt"]
 height = 5.8759
@@ -26,7 +26,7 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_mndv7")
 
 [node name="PlaceholderGround" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+transform = Transform3D(-2.18917e-08, 0, 6.28359, 0, 0.500823, 0, -0.500823, 0, -2.74665e-07, 0, 0, 0)
 material_override = ExtResource("1_ip1ba")
 mesh = ExtResource("2_ea8px")
 
