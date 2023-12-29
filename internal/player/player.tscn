@@ -12,9 +12,10 @@ script = ExtResource("1_mhskb")
 
 [node name="Surfer" parent="." instance=ExtResource("2_3c4ea")]
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("surfer")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -3)
 script = ExtResource("2_b0qfh")
+surfer = NodePath("../Surfer")
 
 [node name="Kite" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7053e-13, 2, 3)

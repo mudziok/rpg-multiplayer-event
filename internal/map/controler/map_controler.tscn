@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj6k2nxidjk16"]
+
+[ext_resource type="Script" path="res://internal/map/controler/map_controler.gd" id="1_yxn48"]
+[ext_resource type="Script" path="res://internal/map/controler/map_generator.gd" id="2_ionqn"]
+
+[node name="map_controler" type="Node3D"]
+script = ExtResource("1_yxn48")
+
+[node name="map_generator" type="Node3D" parent="."]
+script = ExtResource("2_ionqn")

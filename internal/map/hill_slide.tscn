@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dd13b10ko63n4" path="res://internal/resources/models/placeholder_ground.obj" id="2_n1fja"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mndv7"]
-size = Vector3(8, 1, 8)
+size = Vector3(100, 1, 8)
 
 [node name="HillSlide" type="StaticBody3D"]
 metadata/_edit_group_ = true
@@ -13,6 +13,6 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_mndv7")
 
 [node name="PlaceholderGround" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+transform = Transform3D(-2.18557e-08, 0, 6.24832, 0, 0.5, 0, -0.5, 0, -2.73123e-07, 0, 0, 0)
 material_override = ExtResource("1_vm8c6")
 mesh = ExtResource("2_n1fja")
