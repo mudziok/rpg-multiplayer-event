@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://uwsjb7tve6ir"]
+
+[ext_resource type="PackedScene" uid="uid://8aemfyecoqn5" path="res://internal/resources/models/MainCharacter.glb" id="1_5iyi3"]
+[ext_resource type="PackedScene" uid="uid://chfk1bsbinqmv" path="res://internal/resources/models/Gun.glb" id="2_nnk56"]
+
+[node name="MainCharacter" instance=ExtResource("1_5iyi3")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 1.0251, -0.0100874)
+bones/1/position = Vector3(0, 0.111422, -0.00130607)
+bones/1/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(7.86229e-17, 0.0322847, 0.0134525)
+bones/31/scale = Vector3(1, 1, 1)
+
+[node name="Gun" parent="Armature/Skeleton3D" index="8" instance=ExtResource("2_nnk56")]
+transform = Transform3D(0.558788, -0.0281903, -0.828831, -0.829311, -0.0189946, -0.558465, 0, 0.999422, -0.0339925, -0.781207, 1.09066, -0.0241014)

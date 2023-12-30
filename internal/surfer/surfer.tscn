@@ -1,25 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnwfhrln1okcl"]
+[gd_scene load_steps=5 format=3 uid="uid://cnwfhrln1okcl"]
 
 [ext_resource type="Script" path="res://internal/surfer/surfer.gd" id="1_e2pjg"]
+[ext_resource type="PackedScene" uid="uid://uwsjb7tve6ir" path="res://internal/resources/models/MainCharacter.tscn" id="2_ryelq"]
+[ext_resource type="PackedScene" uid="uid://ctavi8fom2v2e" path="res://internal/resources/models/CarDoor.glb" id="3_hbhyq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgpuv"]
 radius = 0.25
 height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n563x"]
-albedo_color = Color(0.0941176, 0, 0.329412, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sdscc"]
-material = SubResource("StandardMaterial3D_n563x")
-radius = 0.25
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6121"]
-albedo_color = Color(0.611765, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_h15eu"]
-material = SubResource("StandardMaterial3D_d6121")
-size = Vector3(0.5, 0.1, 1)
 
 [node name="Skier" type="CharacterBody3D"]
 script = ExtResource("1_e2pjg")
@@ -27,10 +14,8 @@ script = ExtResource("1_e2pjg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xgpuv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_sdscc")
-skeleton = NodePath("../..")
+[node name="MainCharacter" parent="CollisionShape3D" instance=ExtResource("2_ryelq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 
-[node name="SnowBoard" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_h15eu")
+[node name="CarDoor2" parent="." instance=ExtResource("3_hbhyq")]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 3.82137e-15, 4.37114e-08, 1, 1, -1.31134e-07, 1.91069e-15, 0, -0.45, 0)
