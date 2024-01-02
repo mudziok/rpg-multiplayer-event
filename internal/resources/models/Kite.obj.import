@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7b3ofxstk5jb"
+path="res://.godot/imported/Kite.obj-536866cd91dcf7f6fa92234115b70f69.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Kite.obj-536866cd91dcf7f6fa92234115b70f69.mesh"]
+
+source_file="res://internal/resources/models/Kite.obj"
+dest_files=["res://.godot/imported/Kite.obj-536866cd91dcf7f6fa92234115b70f69.mesh", "res://.godot/imported/Kite.obj-536866cd91dcf7f6fa92234115b70f69.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

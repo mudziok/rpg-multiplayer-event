@@ -6,6 +6,11 @@
 
 [node name="Settings" type="PanelContainer"]
 process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+self_modulate = Color(0.447059, 0.396078, 0.443137, 0.952941)
+use_parent_material = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,14 +20,59 @@ offset_right = -72.0
 offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_mxvei")
 script = ExtResource("2_xkrqg")
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+self_modulate = Color(1, 0.686275, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Settings"
+
+[node name="Sound" type="Node2D" parent="VBoxContainer"]
+
+[node name="Sound_text" type="Label" parent="VBoxContainer/Sound"]
+self_modulate = Color(1, 0.686275, 1, 1)
+offset_left = 308.0
+offset_top = 111.0
+offset_right = 712.0
+offset_bottom = 131.0
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="Sound" type="HSlider" parent="VBoxContainer/Sound"]
+offset_left = 305.0
+offset_top = 144.0
+offset_right = 715.0
+offset_bottom = 160.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Music" type="Node2D" parent="VBoxContainer"]
+
+[node name="Sound_text" type="Label" parent="VBoxContainer/Music"]
+self_modulate = Color(1, 0.686275, 1, 1)
+offset_left = 308.0
+offset_top = 218.0
+offset_right = 712.0
+offset_bottom = 238.0
+text = "Music
+"
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="VBoxContainer/Music"]
+offset_left = 305.0
+offset_top = 251.0
+offset_right = 715.0
+offset_bottom = 267.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Back" parent="." instance=ExtResource("3_243cx")]
 layout_mode = 2

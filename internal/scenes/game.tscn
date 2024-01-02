@@ -1,7 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bni63f1mm1tvg"]
+[gd_scene load_steps=11 format=3 uid="uid://bni63f1mm1tvg"]
 
 [ext_resource type="PackedScene" uid="uid://d00kxn8ke7auy" path="res://internal/player/player.tscn" id="1_4yxr6"]
+[ext_resource type="Script" path="res://internal/scenes/game.gd" id="1_6hjq6"]
+[ext_resource type="ArrayMesh" uid="uid://7b3ofxstk5jb" path="res://internal/resources/models/Kite.obj" id="2_uqonq"]
 [ext_resource type="PackedScene" uid="uid://bj6k2nxidjk16" path="res://internal/map/controler/map_controler.tscn" id="4_agi44"]
+
+[sub_resource type="Gradient" id="Gradient_wqvhj"]
+colors = PackedColorArray(0.871247, 1, 0.998547, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ipsv1"]
+gradient = SubResource("Gradient_wqvhj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mhk6w"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(-2.64, -3.16, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 98, 0)
+scale_min = 10.0
+scale_max = 50.0
+color_ramp = SubResource("GradientTexture1D_ipsv1")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87lox"]
 sky_top_color = Color(0.443137, 0.694118, 0.905882, 1)
@@ -19,6 +39,20 @@ ambient_light_sky_contribution = 0.3
 ambient_light_energy = 1.69
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_6hjq6")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(569, 326)
+scale = Vector2(5.96, 3.48)
+amount = 100
+amount_ratio = 0.4573
+process_material = SubResource("ParticleProcessMaterial_mhk6w")
+lifetime = 2.0
+speed_scale = 2.0
+randomness = 1.0
+collision_base_size = 0.0
+trail_lifetime = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y0a4g")
@@ -26,7 +60,36 @@ environment = SubResource("Environment_y0a4g")
 [node name="Player" parent="." instance=ExtResource("1_4yxr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
+[node name="Kite" parent="Player" index="2"]
+mesh = ExtResource("2_uqonq")
+
 [node name="map_controler" parent="." instance=ExtResource("4_agi44")]
+
+[node name="Text time alive" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 87.0
+offset_right = 230.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 24
+text = "Time alive"
+
+[node name="Minutes" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 122.0
+offset_right = 78.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 48
+text = "00:"
+
+[node name="Seconds" type="Label" parent="."]
+offset_left = 158.0
+offset_top = 122.0
+offset_right = 238.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 48
+text = "00"
+
+[node name="ScoreTimer" type="Timer" parent="."]
 
 [connection signal="provide_position" from="Player/Surfer" to="map_controler" method="_on_surfer_provide_position"]
 
