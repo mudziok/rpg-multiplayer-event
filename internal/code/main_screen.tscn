@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://8sdpivu3e1ap"]
+[gd_scene load_steps=4 format=3 uid="uid://8sdpivu3e1ap"]
 
 [ext_resource type="Script" path="res://internal/code/main_screen.gd" id="1_klpvd"]
+[ext_resource type="Texture2D" uid="uid://h5qf5cu2ifhf" path="res://internal/resources/images/Menu.png" id="2_i88hu"]
 [ext_resource type="PackedScene" uid="uid://crs3nja17fdkg" path="res://internal/code/menus/main/main_menu.tscn" id="2_oytqk"]
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1_klpvd")
+
+[node name="Menu" type="Sprite2D" parent="."]
+position = Vector2(580.444, 322.5)
+scale = Vector2(0.613889, 0.613889)
+texture = ExtResource("2_i88hu")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_oytqk")]
 anchors_preset = 8
@@ -12,7 +18,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -92.0
-offset_right = 61.0
-offset_bottom = 92.0
+offset_left = -444.0
+offset_top = -125.0
+offset_right = -147.0
+offset_bottom = 126.0

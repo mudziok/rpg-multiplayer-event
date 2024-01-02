@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bc5m0rya2xoqi"
+path="res://.godot/imported/Tail_kite.obj-98f9866590b2af78bf1f7a0adacce917.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tail_kite.obj-98f9866590b2af78bf1f7a0adacce917.mesh"]
+
+source_file="res://internal/resources/models/Tail_kite.obj"
+dest_files=["res://.godot/imported/Tail_kite.obj-98f9866590b2af78bf1f7a0adacce917.mesh", "res://.godot/imported/Tail_kite.obj-98f9866590b2af78bf1f7a0adacce917.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
