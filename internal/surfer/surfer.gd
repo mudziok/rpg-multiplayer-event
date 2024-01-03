@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal provide_position(position :Vector3)
+signal on_player_fail
 
 const ACCELERATION_Z = 3.0
 const DEACCELERATION_Z = ACCELERATION_Z * 2.0
@@ -49,3 +50,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	emit_signal("provide_position",position)
+	
+	#game over when fall
+	if position.y<-100:
+		on_player_fail.emit()
+		
