@@ -4,7 +4,8 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 @onready var  map_generator = $map_generator
 var player_position :Vector3
-var map: Array[ground_tile]
+var map: Array
+
 func remove_tiles_behind():
 	var tile = map[0]
 	
@@ -16,7 +17,7 @@ func remove_tiles_behind():
 
 func _ready():
 	for i in range(15):
-		var tile = map_generator.generate_tile()
+		var tile = map_generator.generate_tile(10)
 		map.append(tile)
 		add_child(tile)
 
@@ -25,12 +26,11 @@ func _ready():
 func _process(_delta):
 	remove_tiles_behind()
 	if(map.size() < 15):
-		var tile = map_generator.generate_tile()
+		var tile = map_generator.generate_tile(player_position.z)
 		map.append(tile)
 		add_child(tile)
 		
 
 
 func _on_surfer_provide_position(position):
-
 	player_position =position

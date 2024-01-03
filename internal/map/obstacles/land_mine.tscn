@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://wbfaseqcj0hb"]
+
+[ext_resource type="Script" path="res://LandMine.gd" id="1_2abjc"]
+[ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="2_4axvm"]
+[ext_resource type="Texture2D" uid="uid://h5qf5cu2ifhf" path="res://internal/resources/images/Menu.png" id="3_erdgg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuvm6"]
+size = Vector3(1, 0.285, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u2tvk"]
+lightmap_size_hint = Vector2i(15, 6)
+uv2_padding = 0.0
+top_radius = 0.38
+height = 0.265
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qulf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_4axvm")
+shader_parameter/image_texture = ExtResource("3_erdgg")
+
+[node name="LandMine" type="Area3D"]
+script = ExtResource("1_2abjc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kuvm6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_u2tvk")
+surface_material_override/0 = SubResource("ShaderMaterial_8qulf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

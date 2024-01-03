@@ -25,3 +25,5 @@ skeleton = NodePath("../..")
 [connection signal="left_mouse_button_down" from="." to="Surfer" method="set_is_clinching"]
 [connection signal="left_mouse_button_down" from="." to="Camera" method="_on_player_left_mouse_button_down"]
 [connection signal="raycast_move" from="." to="Surfer" method="set_attractor"]
+[connection signal="on_player_fail" from="Surfer" to="." method="_on_surfer_on_player_fail"]
+[connection signal="provide_position" from="Surfer" to="." method="_on_surfer_provide_position"]

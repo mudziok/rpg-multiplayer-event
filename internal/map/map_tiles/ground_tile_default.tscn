@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxxtsqyadyaha"]
+[gd_scene load_steps=10 format=3 uid="uid://dxxtsqyadyaha"]
 
 [ext_resource type="Script" path="res://internal/map/map_tiles/ground_tile.gd" id="1_kmlbi"]
 [ext_resource type="Script" path="res://internal/map/controler/collider.gd" id="2_lfb68"]
 [ext_resource type="Material" uid="uid://n4jmgqc1slrx" path="res://internal/map/hill_material.tres" id="3_8tqr6"]
+[ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="4_188pi"]
+[ext_resource type="Texture2D" uid="uid://c6cdykx0dpayo" path="res://internal/resources/textures/leaves.jpg" id="5_hm0e2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7vsx"]
 size = Vector3(100, 1, 10)
@@ -10,6 +12,14 @@ size = Vector3(100, 1, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_1moxo"]
 material = ExtResource("3_8tqr6")
 size = Vector3(100, 1, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08r62"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_188pi")
+shader_parameter/image_texture = ExtResource("5_hm0e2")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdvg2"]
 
 [node name="ground_tile_default" type="StaticBody3D"]
 script = ExtResource("1_kmlbi")
@@ -20,3 +30,8 @@ script = ExtResource("2_lfb68")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1moxo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 6.42103, 0, 0, 0, 1, 0, -2.94556, -5)
+material_override = SubResource("ShaderMaterial_08r62")
+mesh = SubResource("BoxMesh_pdvg2")
