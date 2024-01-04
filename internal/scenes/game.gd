@@ -26,7 +26,9 @@ func _process(delta):
 func _on_player_on_player_lose():
 	#może po jakimś delayu?
 	get_tree().change_scene_to_file("res://internal/code/main_screen.tscn")
-
+	
+func _on_land_mine_on_player_exploded():
+	get_tree().change_scene_to_file("res://internal/code/main_screen.tscn")
 
 func _on_player_provide_position(pose):
 	distance = pose.z
