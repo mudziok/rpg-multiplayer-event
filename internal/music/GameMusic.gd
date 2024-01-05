@@ -1,4 +1,11 @@
 extends AudioStreamPlayer
 
+var min_velocity = 5.0
+var max_velocity = 35.0
+var min_pitch_scale = 0.75
+var max_pitch_scale = 1.5
+
 func _on_speedometer_provide_velocity(velocity):
-	pitch_scale = clamp((velocity / 10) - 0.25, 0.75, 1.5)
+	var il = inverse_lerp(min_velocity, max_velocity, velocity)
+	il = clamp(il, 0, 1)
+	pitch_scale = lerp(min_pitch_scale, max_pitch_scale, il)
