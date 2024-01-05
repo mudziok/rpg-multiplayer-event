@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://8sdpivu3e1ap"]
+[gd_scene load_steps=5 format=3 uid="uid://8sdpivu3e1ap"]
 
 [ext_resource type="Script" path="res://internal/code/main_screen.gd" id="1_klpvd"]
 [ext_resource type="Texture2D" uid="uid://h5qf5cu2ifhf" path="res://internal/resources/images/Menu.png" id="2_i88hu"]
 [ext_resource type="PackedScene" uid="uid://crs3nja17fdkg" path="res://internal/code/menus/main/main_menu.tscn" id="2_oytqk"]
+[ext_resource type="AudioStream" uid="uid://br1qep4c5fysv" path="res://internal/music/mainu.wav" id="4_hux71"]
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1_klpvd")
@@ -22,3 +23,7 @@ offset_left = -444.0
 offset_top = -125.0
 offset_right = -147.0
 offset_bottom = 126.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hux71")
+autoplay = true

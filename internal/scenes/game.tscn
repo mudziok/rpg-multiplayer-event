@@ -95,6 +95,9 @@ text = "00"
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="on_player_lose" from="Player" to="." method="_on_player_on_player_lose"]
 [connection signal="provide_position" from="Player" to="." method="_on_player_provide_position"]
 [connection signal="provide_position" from="Player" to="speedometer" method="_on_player_provide_position"]
