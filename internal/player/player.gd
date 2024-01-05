@@ -1,6 +1,5 @@
 extends Node3D
 
-signal raycast_move(end: Vector3)
 signal left_mouse_button_down(is_pressed: bool)
 signal provide_position(pose:Vector3)
 signal on_player_lose
@@ -14,17 +13,17 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var cursor = camera.raycast_cursor_forward(5)
+func _physics_process(delta):
+	var cursor = camera.raycast_cursor_forward(10)
 	camera.follow_point(Vector2(cursor.x, cursor.y), delta)
-	emit_signal("raycast_move", cursor)
 	
 	var is_left_mouse_button_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	emit_signal("left_mouse_button_down", is_left_mouse_button_down)
 	
 	camera.global_position.z = surfer.global_position.z - 4.0
 	kite.global_position = cursor
+	kite.look_at(surfer.global_position)
+	surfer.set_attractor(cursor)
 
 
 func _on_surfer_on_player_fail():

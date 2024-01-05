@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bni63f1mm1tvg"]
+[gd_scene load_steps=14 format=3 uid="uid://bni63f1mm1tvg"]
 
 [ext_resource type="PackedScene" uid="uid://d00kxn8ke7auy" path="res://internal/player/player.tscn" id="1_4yxr6"]
 [ext_resource type="Script" path="res://internal/scenes/game.gd" id="1_6hjq6"]
 [ext_resource type="ArrayMesh" uid="uid://7b3ofxstk5jb" path="res://internal/resources/models/Kite.obj" id="2_uqonq"]
 [ext_resource type="PackedScene" uid="uid://bj6k2nxidjk16" path="res://internal/map/controler/map_controler.tscn" id="4_agi44"]
 [ext_resource type="PackedScene" uid="uid://vitfnq6fnkod" path="res://internal/speedometer/speedometer.tscn" id="5_ee0uk"]
+[ext_resource type="AudioStream" uid="uid://bkye5ahy84y2t" path="res://internal/music/gamusic.wav" id="6_8r63h"]
+[ext_resource type="Script" path="res://internal/music/GameMusic.gd" id="7_jxs1r"]
 
 [sub_resource type="Gradient" id="Gradient_wqvhj"]
 colors = PackedColorArray(0.871247, 1, 0.998547, 1, 1, 1, 1, 0)
@@ -95,9 +97,15 @@ text = "00"
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8r63h")
+autoplay = true
+script = ExtResource("7_jxs1r")
+
 [connection signal="on_player_lose" from="Player" to="." method="_on_player_on_player_lose"]
 [connection signal="provide_position" from="Player" to="." method="_on_player_provide_position"]
 [connection signal="provide_position" from="Player" to="speedometer" method="_on_player_provide_position"]
 [connection signal="provide_position" from="Player/Surfer" to="map_controler" method="_on_surfer_provide_position"]
+[connection signal="provide_velocity" from="speedometer" to="GameMusic" method="_on_speedometer_provide_velocity"]
 
 [editable path="Player"]
