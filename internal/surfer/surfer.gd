@@ -20,10 +20,11 @@ func set_attractor(new_attractor: Vector3):
 	
 func set_is_clinching(new_chlinching: bool):
 	is_clinching = new_chlinching
-
-func get_angle_to_attractor():
-	# XD this 100% isnt correct some vfx artist smarter than me please fix
-	return global_position.signed_angle_to(attractor, Vector3.FORWARD)
+	
+func update_rotation():
+	var squashed_attractor = Vector3(attractor.x, global_position.y, attractor.z)
+	look_at(squashed_attractor)
+	rotation_degrees.y += 180
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -46,7 +47,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, min_velocity, DEACCELERATION_Z * delta)
 	
 	
-	rotation.y = get_angle_to_attractor()
+	update_rotation()
 	
 	move_and_slide()
 	emit_signal("provide_position",position)

@@ -12,9 +12,12 @@ func _ready():
 	pass # Replace with function body.
 
 func raycast_cursor_forward(distance: int):
-	var mouse_pos = get_viewport().get_mouse_position()
-	var origin = project_ray_origin(mouse_pos)
-	var end = origin + project_ray_normal(mouse_pos) * distance
+	#var mouse_pos = get_viewport().get_mouse_position()
+	#var origin = project_ray_origin(mouse_pos)
+	#var end = origin + project_ray_normal(mouse_pos) * distance
+	
+	# i think this is better than the above
+	var end = project_position(get_viewport().get_mouse_position(), distance)
 	
 	return end
 
