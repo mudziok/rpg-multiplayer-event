@@ -6,5 +6,6 @@
 bg_color = Color(0.513726, 0.490196, 0.454902, 1)
 
 [resource]
+default_base_scale = 2.7
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_k4w50")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_susaj")
