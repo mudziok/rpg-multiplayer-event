@@ -19,7 +19,6 @@ func populate_tile(object_count:int):
 		var index:int = possibility_function()
 		var obstacle_instance = obstacle_list[index].instantiate()
 		obstacle_instance.position = obstacle_position - Vector3(x_bound/2,0,z_bound/2)
-		print(obstacle_instance.position)
 		add_child(obstacle_instance)
 	
 func possibility_function():

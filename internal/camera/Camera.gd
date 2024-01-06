@@ -23,9 +23,11 @@ func raycast_cursor_forward(distance: int):
 
 func follow_point(cursor: Vector2, delta: float):
 	var new_h_offset = (global_position.x - cursor.x) * MAX_FOLLOW_OFFSET
+	cursor.y = max(cursor.y, -3)	#Prevents from looking into ground
 	var new_v_offset = (cursor.y - global_position.y) * MAX_FOLLOW_OFFSET
 	
 	global_position = surfer.global_position - Vector3.FORWARD*3 + Vector3.UP * 2
+	global_position.y = max(global_position.y, 2)
 	h_offset = lerp(h_offset, new_h_offset, delta * CAMERA_FOLLOW_SPEED)
 	v_offset = lerp(v_offset, new_v_offset, delta * CAMERA_FOLLOW_SPEED)
 

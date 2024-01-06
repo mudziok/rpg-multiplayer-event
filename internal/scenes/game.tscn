@@ -159,7 +159,41 @@ script = ExtResource("8_hfpfc")
 on_click_sound = ExtResource("9_0vbc8")
 on_hover_sound = ExtResource("10_youon")
 
-[node name="TestingNode" type="Node" parent="."]
+[node name="DistanceText" type="Label" parent="GameOverScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -39.0
+offset_right = 117.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Distance: 1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DistanceText2" type="Label" parent="GameOverScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = 2.0
+offset_right = 117.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Previous best: 1234"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="on_player_lose" from="Player" to="." method="_on_player_on_player_lose"]
 [connection signal="provide_position" from="Player" to="." method="_on_player_provide_position"]
