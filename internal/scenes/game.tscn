@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bni63f1mm1tvg"]
+[gd_scene load_steps=24 format=3 uid="uid://bni63f1mm1tvg"]
 
 [ext_resource type="PackedScene" uid="uid://d00kxn8ke7auy" path="res://internal/player/player.tscn" id="1_4yxr6"]
 [ext_resource type="Script" path="res://internal/scenes/game.gd" id="1_6hjq6"]
 [ext_resource type="ArrayMesh" uid="uid://7b3ofxstk5jb" path="res://internal/resources/models/Kite.obj" id="2_uqonq"]
+[ext_resource type="Shader" path="res://internal/scenes/SkyShader.gdshader" id="3_001jn"]
 [ext_resource type="PackedScene" uid="uid://bj6k2nxidjk16" path="res://internal/map/controler/map_controler.tscn" id="4_agi44"]
+[ext_resource type="Texture2D" uid="uid://bgtoc8nxbqnmq" path="res://internal/Epic_BlueSunset_EquiRect_flat.png" id="4_tru4q"]
 [ext_resource type="PackedScene" uid="uid://vitfnq6fnkod" path="res://internal/speedometer/speedometer.tscn" id="5_ee0uk"]
 [ext_resource type="AudioStream" uid="uid://bkye5ahy84y2t" path="res://internal/music/gamusic.wav" id="6_8r63h"]
 [ext_resource type="Script" path="res://internal/music/GameMusic.gd" id="7_jxs1r"]
+[ext_resource type="Script" path="res://internal/scenes/GameOverScreen.gd" id="8_8fttb"]
+[ext_resource type="Script" path="res://internal/code/code_resources/button_sound.gd" id="8_hfpfc"]
+[ext_resource type="AudioStream" uid="uid://6xeiqdlvxii4" path="res://external/sound/sfx/button_sounds/on_click.wav" id="9_0vbc8"]
+[ext_resource type="AudioStream" uid="uid://b4cinvi8q24v2" path="res://external/sound/sfx/button_sounds/on_hover.wav" id="10_youon"]
 
 [sub_resource type="Gradient" id="Gradient_wqvhj"]
 colors = PackedColorArray(0.871247, 1, 0.998547, 1, 1, 1, 1, 0)
@@ -26,12 +32,14 @@ scale_min = 10.0
 scale_max = 50.0
 color_ramp = SubResource("GradientTexture1D_ipsv1")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87lox"]
-sky_top_color = Color(0.443137, 0.694118, 0.905882, 1)
-sky_horizon_color = Color(0.905882, 0.909804, 0.913725, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7wc5"]
+shader = ExtResource("3_001jn")
+shader_parameter/skyColor = null
+shader_parameter/horizonColor = null
+shader_parameter/skyTexture = ExtResource("4_tru4q")
 
 [sub_resource type="Sky" id="Sky_j8r5l"]
-sky_material = SubResource("ProceduralSkyMaterial_87lox")
+sky_material = SubResource("ShaderMaterial_r7wc5")
 
 [sub_resource type="Environment" id="Environment_y0a4g"]
 background_mode = 2
@@ -40,6 +48,18 @@ ambient_light_source = 3
 ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
 ambient_light_sky_contribution = 0.3
 ambient_light_energy = 1.69
+
+[sub_resource type="LabelSettings" id="LabelSettings_ad43w"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2jsm"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_akqh1"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5skb"]
+font_size = 40
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_6hjq6")
@@ -69,9 +89,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Kite" parent="Player" index="2"]
 mesh = ExtResource("2_uqonq")
 
+[node name="UIBackground" type="PanelContainer" parent="."]
+offset_left = 5.0
+offset_top = 75.0
+offset_right = 354.0
+offset_bottom = 241.0
+
 [node name="speedometer" parent="." instance=ExtResource("5_ee0uk")]
 
-[node name="Text time alive" type="Label" parent="."]
+[node name="TextTimeAlive" type="Label" parent="."]
 offset_left = 30.0
 offset_top = 87.0
 offset_right = 230.0
@@ -82,7 +108,7 @@ text = "Time alive"
 [node name="Minutes" type="Label" parent="."]
 offset_left = 38.0
 offset_top = 122.0
-offset_right = 78.0
+offset_right = 158.0
 offset_bottom = 180.0
 theme_override_font_sizes/font_size = 48
 text = "00:"
@@ -102,10 +128,171 @@ stream = ExtResource("6_8r63h")
 autoplay = true
 script = ExtResource("7_jxs1r")
 
+[node name="GameOverScreen" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("8_8fttb")
+
+[node name="MainMenuButton" type="Button" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -70.0
+offset_right = -104.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+script = ExtResource("8_hfpfc")
+on_click_sound = ExtResource("9_0vbc8")
+on_hover_sound = ExtResource("10_youon")
+
+[node name="PlayAgainButton" type="Button" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_top = -70.0
+offset_right = 256.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play again"
+script = ExtResource("8_hfpfc")
+on_click_sound = ExtResource("9_0vbc8")
+on_hover_sound = ExtResource("10_youon")
+
+[node name="DistanceTitle" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -153.0
+offset_right = 289.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Distance"
+label_settings = SubResource("LabelSettings_ad43w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextAliveTitle" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 53.0
+offset_right = 281.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 24
+text = "Time alive"
+label_settings = SubResource("LabelSettings_r2jsm")
+
+[node name="PreviousBestTime" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = 2.0
+offset_right = -27.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Best: 12:23
+"
+label_settings = SubResource("LabelSettings_akqh1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousBestDistance" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = 3.0
+offset_right = 270.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "best: 1234"
+label_settings = SubResource("LabelSettings_akqh1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Distance" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = -89.0
+offset_right = 269.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12000
+"
+label_settings = SubResource("LabelSettings_n5skb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Minutes" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 99.0
+offset_right = 175.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 48
+text = "00:"
+
+[node name="Seconds" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 99.0
+offset_right = 255.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 48
+text = "00"
+
 [connection signal="on_player_lose" from="Player" to="." method="_on_player_on_player_lose"]
 [connection signal="provide_position" from="Player" to="." method="_on_player_provide_position"]
 [connection signal="provide_position" from="Player" to="speedometer" method="_on_player_provide_position"]
 [connection signal="provide_position" from="Player/Surfer" to="map_controler" method="_on_surfer_provide_position"]
 [connection signal="provide_velocity" from="speedometer" to="GameMusic" method="_on_speedometer_provide_velocity"]
+[connection signal="mouse_entered" from="GameOverScreen/MainMenuButton" to="GameOverScreen/MainMenuButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="GameOverScreen/MainMenuButton" to="GameOverScreen" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/MainMenuButton" to="GameOverScreen/MainMenuButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="GameOverScreen/PlayAgainButton" to="GameOverScreen/PlayAgainButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="GameOverScreen/PlayAgainButton" to="GameOverScreen" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/PlayAgainButton" to="GameOverScreen/PlayAgainButton" method="_on_pressed"]
 
 [editable path="Player"]

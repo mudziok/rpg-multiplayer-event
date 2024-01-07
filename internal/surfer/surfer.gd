@@ -49,6 +49,6 @@ func _physics_process(delta):
 	emit_signal("provide_position",position)
 	
 	#game over when fall
-	if position.y<-100:
+	if position.y < -20:
 		on_player_fail.emit()
 		

@@ -8,6 +8,8 @@ signal on_player_lose
 @onready var surfer = $Surfer
 @onready var kite = $Kite
 
+var is_game_over = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,7 +29,9 @@ func _physics_process(delta):
 
 
 func _on_surfer_on_player_fail():
-	on_player_lose.emit()
+	if(!is_game_over):
+		on_player_lose.emit()
+		is_game_over = true
 
 
 func _on_surfer_provide_position(position):
