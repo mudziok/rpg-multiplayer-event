@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="name_missing"
+config/name="Kite Slider"
 config/description="This game is definitly about something, but I have no idea what exactly. Please help me."
 config/version="0.0.0.0.0.0.0"
 run/main_scene="res://internal/code/main_screen.tscn"
