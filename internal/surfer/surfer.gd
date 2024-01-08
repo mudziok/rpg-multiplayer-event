@@ -3,9 +3,9 @@ extends CharacterBody3D
 signal provide_position(position :Vector3)
 signal on_player_fail
 
-const ACCELERATION = Vector3(10, 250, 5)
+const ACCELERATION = Vector3(10, 20, 5)
 const AIR_ACCELERATION_Z_MULTIPLIER = 0.1
-const DECELERATION_Z = ACCELERATION.z * 2.0
+const DECELERATION_Z = ACCELERATION.z * 3.0
 const SPEED_X = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if is_clinching:
 		# only allow flying up if you have some forward velocity
 		if velocity.z > 0.1:
-			velocity.y = (vec_to_attractor.y + 0.2) * ACCELERATION.y * delta
+			velocity.y += (vec_to_attractor.y + 0.2) * ACCELERATION.y * delta
 		
 		# slow down when flying on the kite
 		velocity.z -= DECELERATION_Z * delta

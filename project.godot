@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="name_missing"
+config/name="Kite Slider"
 config/description="This game is definitly about something, but I have no idea what exactly. Please help me."
 config/version="0.0.0.0.0.0.0"
 run/main_scene="res://internal/code/main_screen.tscn"
@@ -26,6 +26,7 @@ driver/mix_rate.web=44100
 GlobalSounds="*res://internal/code/globals/singletons/global_sounds.tscn"
 PopUpDisplay="*res://internal/code/globals/singletons/pop_up_display.tscn"
 HillSingleton="*res://internal/code/globals/singletons/hill_singleton.gd"
+SettingsManager="*res://internal/code/globals/singletons/settings_manager.gd"
 
 [display]
 

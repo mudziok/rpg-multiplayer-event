@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnh4gtildw180"]
+[gd_scene load_steps=5 format=3 uid="uid://dnh4gtildw180"]
 
 [ext_resource type="Theme" uid="uid://djqxggbyxn27d" path="res://internal/resources/themes/default_menu_theme.tres" id="1_mxvei"]
 [ext_resource type="Script" path="res://internal/code/menus/settings/settings.gd" id="2_xkrqg"]
+[ext_resource type="Theme" uid="uid://vr76jy1rln65" path="res://internal/resources/themes/slider.tres" id="3_66wmf"]
 [ext_resource type="PackedScene" uid="uid://bixuvnj0ukhsj" path="res://internal/code/code_resources/button_sound.tscn" id="3_243cx"]
 
 [node name="Settings" type="PanelContainer"]
@@ -50,9 +51,12 @@ horizontal_alignment = 1
 offset_left = 305.0
 offset_top = 144.0
 offset_right = 715.0
-offset_bottom = 160.0
+offset_bottom = 208.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_66wmf")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Music" type="Node2D" parent="VBoxContainer"]
 
@@ -73,6 +77,9 @@ offset_right = 715.0
 offset_bottom = 267.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_66wmf")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Back" parent="." instance=ExtResource("3_243cx")]
 layout_mode = 2
@@ -80,4 +87,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="value_changed" from="VBoxContainer/Sound/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music/Music" to="." method="_on_music_value_changed"]
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://vr76jy1rln65"]
+
+[ext_resource type="Texture2D" uid="uid://c86itgwkjbbou" path="res://internal/resources/images/kite.png" id="1_u5rfb"]
+[ext_resource type="Texture2D" uid="uid://cvdfds621bt0f" path="res://internal/resources/images/kite_highlight.png" id="2_8wdob"]
+
+[resource]
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber = ExtResource("1_u5rfb")
+HSlider/icons/grabber_highlight = ExtResource("2_8wdob")

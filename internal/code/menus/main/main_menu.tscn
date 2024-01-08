@@ -53,6 +53,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="VBoxContainer/Settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="VBoxContainer/Credits" to="." method="_on_credits_button_up"]

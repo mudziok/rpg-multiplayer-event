@@ -6,7 +6,7 @@ global uniform float y_axis: hint_range(-2.0, 2.0, 0.1 );
 uniform sampler2D image_texture: hint_default_white;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
-    return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
+	return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
 }
 
 void vertex(){
