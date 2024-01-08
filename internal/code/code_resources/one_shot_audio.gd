@@ -7,6 +7,7 @@ func _init(sound_stream: AudioStream):
 		self.queue_free()
 	self.stream = sound_stream
 	self.autoplay = true
+	self.bus = "Sound"
 	self.finished.connect(_on_finished)
 
 func _on_finished():

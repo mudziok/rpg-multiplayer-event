@@ -55,6 +55,8 @@ offset_bottom = 208.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_66wmf")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Music" type="Node2D" parent="VBoxContainer"]
 
@@ -76,6 +78,8 @@ offset_bottom = 267.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_66wmf")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Back" parent="." instance=ExtResource("3_243cx")]
 layout_mode = 2
@@ -83,4 +87,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back"
 
+[connection signal="value_changed" from="VBoxContainer/Sound/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music/Music" to="." method="_on_music_value_changed"]
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

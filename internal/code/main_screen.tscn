@@ -27,3 +27,4 @@ offset_bottom = 126.0
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hux71")
 autoplay = true
+bus = &"Music"
