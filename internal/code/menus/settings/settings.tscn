@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnh4gtildw180"]
+[gd_scene load_steps=5 format=3 uid="uid://dnh4gtildw180"]
 
 [ext_resource type="Theme" uid="uid://djqxggbyxn27d" path="res://internal/resources/themes/default_menu_theme.tres" id="1_mxvei"]
 [ext_resource type="Script" path="res://internal/code/menus/settings/settings.gd" id="2_xkrqg"]
+[ext_resource type="Theme" uid="uid://vr76jy1rln65" path="res://internal/resources/themes/slider.tres" id="3_66wmf"]
 [ext_resource type="PackedScene" uid="uid://bixuvnj0ukhsj" path="res://internal/code/code_resources/button_sound.tscn" id="3_243cx"]
 
 [node name="Settings" type="PanelContainer"]
@@ -50,9 +51,10 @@ horizontal_alignment = 1
 offset_left = 305.0
 offset_top = 144.0
 offset_right = 715.0
-offset_bottom = 160.0
+offset_bottom = 208.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_66wmf")
 
 [node name="Music" type="Node2D" parent="VBoxContainer"]
 
@@ -73,6 +75,7 @@ offset_right = 715.0
 offset_bottom = 267.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_66wmf")
 
 [node name="Back" parent="." instance=ExtResource("3_243cx")]
 layout_mode = 2
