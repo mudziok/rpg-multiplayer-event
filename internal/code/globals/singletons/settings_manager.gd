@@ -1,5 +1,6 @@
 extends Node
 
+# I guess it shouldn't be done this way but ¯\_ツ)_/¯
 var file_name = "user://settings.tres"
 var sound_bus = AudioServer.get_bus_index("Sound")
 var music_bus = AudioServer.get_bus_index("Music")

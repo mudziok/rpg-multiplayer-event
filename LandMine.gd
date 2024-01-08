@@ -3,6 +3,7 @@ extends Node3D
 signal player_exploded
 
 func _on_body_entered(body):
+	# check if body has velocity so we are not exploding trees anymore
 	if "velocity" in body:
 		print("this landmine put you in the sky and killed you, maybe explosion?")
 		body.velocity.y += 20
