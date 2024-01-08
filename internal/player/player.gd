@@ -17,7 +17,8 @@ func _ready():
 
 func _physics_process(delta):
 	var cursor = camera.raycast_cursor_forward(10)
-	camera.follow_point(Vector2(cursor.x, cursor.y), delta)
+	if not is_game_over:
+		camera.follow_point(Vector2(cursor.x, cursor.y), delta)
 	
 	var is_left_mouse_button_down = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	emit_signal("left_mouse_button_down", is_left_mouse_button_down)
