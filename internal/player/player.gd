@@ -33,6 +33,7 @@ func _on_surfer_on_player_fail():
 	if(!is_game_over):
 		on_player_lose.emit()
 		is_game_over = true
+		kite.visible = false
 
 
 func _on_surfer_provide_position(position):
