@@ -87,6 +87,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="value_changed" from="VBoxContainer/Sound/Sound" to="." method="_on_sound_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Music/Music" to="." method="_on_music_value_changed"]
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

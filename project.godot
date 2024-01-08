@@ -26,6 +26,7 @@ driver/mix_rate.web=44100
 GlobalSounds="*res://internal/code/globals/singletons/global_sounds.tscn"
 PopUpDisplay="*res://internal/code/globals/singletons/pop_up_display.tscn"
 HillSingleton="*res://internal/code/globals/singletons/hill_singleton.gd"
+SettingsManager="*res://internal/code/globals/singletons/settings_manager.gd"
 
 [display]
 

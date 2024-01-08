@@ -18,3 +18,8 @@ func _on_exit_button_up():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
 		get_tree().quit()
+
+
+func _on_ready():
+	var settings = get_node("/root/SettingsManager")
+	settings.load_settings()
