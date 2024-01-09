@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkaluf2ev48kn"]
+
+[ext_resource type="Script" path="res://internal/map/obstacles/obstacle.gd" id="1_neclu"]
+[ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="2_4lxd5"]
+[ext_resource type="Texture2D" uid="uid://2650jqcycvxo" path="res://internal/resources/textures/Rock_DefaultMaterial_BaseMap.png" id="2_elfx4"]
+[ext_resource type="ArrayMesh" uid="uid://iuud7dabr3e" path="res://internal/resources/models/Rock.obj" id="3_1778h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kbina"]
+radius = 2.2978
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b070k"]
+render_priority = 0
+shader = ExtResource("2_4lxd5")
+shader_parameter/image_texture = ExtResource("2_elfx4")
+
+[node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(0.603425, 0, 0, 0, 0.603425, 0, 0, 0, 0.603425, 0, -1.02296, 0)
+script = ExtResource("1_neclu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.712906, 0, 0, 0, 0.712906, 0, 0, 0, 0.712906, 0, -0.329309, 0)
+shape = SubResource("SphereShape3D_kbina")
+
+[node name="PlaceholderTree" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.408319, 0, 0, 0, 0.408319, 0, 0, 0, 0.408319, 0, -1.07812, 0)
+material_override = SubResource("ShaderMaterial_b070k")
+mesh = ExtResource("3_1778h")

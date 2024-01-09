@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://mp1usdhawbmo"]
+[gd_scene load_steps=12 format=3 uid="uid://mp1usdhawbmo"]
 
 [ext_resource type="Material" uid="uid://n4jmgqc1slrx" path="res://internal/map/hill_material.tres" id="1_ip1ba"]
 [ext_resource type="ArrayMesh" uid="uid://dd13b10ko63n4" path="res://internal/resources/models/placeholder_ground.obj" id="2_ea8px"]
 [ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="3_n7w0a"]
 [ext_resource type="Texture2D" uid="uid://c6cdykx0dpayo" path="res://internal/resources/textures/leaves.jpg" id="4_31f1f"]
 [ext_resource type="ArrayMesh" uid="uid://bpwdx5c2pbwu0" path="res://internal/resources/models/placeholder_tree.obj" id="5_1bx73"]
+[ext_resource type="Texture2D" uid="uid://ed8ycpguvt5m" path="res://internal/resources/textures/Wood_Albedo.png" id="6_x6o0s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mndv7"]
 size = Vector3(100, 1, 8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s2vbt"]
-height = 5.8759
+height = 9.84955
 radius = 1.99153
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jy75b"]
@@ -18,6 +19,15 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_n7w0a")
 shader_parameter/image_texture = ExtResource("4_31f1f")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5xnnu"]
+height = 7.90873
+radius = 3.00507
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg3h5"]
+render_priority = 0
+shader = ExtResource("3_n7w0a")
+shader_parameter/image_texture = ExtResource("6_x6o0s")
 
 [node name="HillSlide" type="StaticBody3D"]
 metadata/_edit_group_ = true
@@ -31,7 +41,7 @@ material_override = ExtResource("1_ip1ba")
 mesh = ExtResource("2_ea8px")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.39205, 1.04059, -1.47744)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.39205, 1.62062, -1.47744)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CylinderShape3D_s2vbt")
@@ -45,9 +55,18 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.85152, 1.04059, 2.11232)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("CylinderShape3D_s2vbt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180092, 3.69086, -0.00379515)
+shape = SubResource("CylinderShape3D_5xnnu")
 
 [node name="PlaceholderTree" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.58283, 0)
 material_override = SubResource("ShaderMaterial_jy75b")
 mesh = ExtResource("5_1bx73")
 skeleton = NodePath("../..")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.195638, 0)
+material_override = SubResource("ShaderMaterial_yg3h5")
+radius = 0.823552
+height = 3.50566
+sides = 16
