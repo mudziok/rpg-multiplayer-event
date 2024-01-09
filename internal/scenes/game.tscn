@@ -38,16 +38,18 @@ shader_parameter/skyColor = null
 shader_parameter/horizonColor = null
 shader_parameter/skyTexture = ExtResource("4_tru4q")
 
-[sub_resource type="Sky" id="Sky_j8r5l"]
+[sub_resource type="Sky" id="Sky_rgmw4"]
 sky_material = SubResource("ShaderMaterial_r7wc5")
 
 [sub_resource type="Environment" id="Environment_y0a4g"]
 background_mode = 2
-sky = SubResource("Sky_j8r5l")
+sky = SubResource("Sky_rgmw4")
 ambient_light_source = 3
 ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
 ambient_light_sky_contribution = 0.3
 ambient_light_energy = 1.69
+glow_enabled = true
+glow_intensity = 2.4
 
 [sub_resource type="LabelSettings" id="LabelSettings_ad43w"]
 font_size = 30

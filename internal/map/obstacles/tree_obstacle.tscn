@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgjiie43bcgfn"]
+[gd_scene load_steps=11 format=3 uid="uid://cgjiie43bcgfn"]
 
 [ext_resource type="Script" path="res://internal/map/obstacles/obstacle.gd" id="1_lk32y"]
 [ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="2_wv2iy"]
 [ext_resource type="Texture2D" uid="uid://c6cdykx0dpayo" path="res://internal/resources/textures/leaves.jpg" id="3_xm1j0"]
 [ext_resource type="ArrayMesh" uid="uid://bpwdx5c2pbwu0" path="res://internal/resources/models/placeholder_tree.obj" id="4_624f4"]
 [ext_resource type="Texture2D" uid="uid://ed8ycpguvt5m" path="res://internal/resources/textures/Wood_Albedo.png" id="5_ss38l"]
+[ext_resource type="Texture2D" uid="uid://b6tsytly1tche" path="res://internal/resources/textures/snow.jpg" id="6_ygh58"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ddl78"]
 height = 5.8759
@@ -20,6 +21,11 @@ shader_parameter/image_texture = ExtResource("3_xm1j0")
 render_priority = 0
 shader = ExtResource("2_wv2iy")
 shader_parameter/image_texture = ExtResource("5_ss38l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3nk1t"]
+render_priority = 0
+shader = ExtResource("2_wv2iy")
+shader_parameter/image_texture = ExtResource("6_ygh58")
 
 [node name="StaticBody3D" type="StaticBody3D"]
 script = ExtResource("1_lk32y")
@@ -39,3 +45,8 @@ material_override = SubResource("ShaderMaterial_shgmr")
 radius = 0.475816
 height = 1.96919
 sides = 16
+
+[node name="PlaceholderTree2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.570362, 0, 0, 0, 0.458241, 0, 0, 0, 0.543217, 0, 0.49941, 0)
+material_override = SubResource("ShaderMaterial_3nk1t")
+mesh = ExtResource("4_624f4")

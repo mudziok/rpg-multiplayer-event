@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqvpx0k4y3ux7" path="res://internal/resources/textures/ROCK AND STONE_Normal.png" id="6_yxs5b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5y5m4"]
-size = Vector3(13.1553, 11.4724, 15.7851)
+size = Vector3(13.1553, 41.4455, 18.956)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7vsx"]
 size = Vector3(105.897, 1, 10)
@@ -38,7 +38,7 @@ shape = SubResource("BoxShape3D_5y5m4")
 script = ExtResource("2_lfb68")
 
 [node name="collider2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.4869, 2.50345, 0.840359)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.4869, 17.49, -0.745115)
 shape = SubResource("BoxShape3D_5y5m4")
 script = ExtResource("2_lfb68")
 
