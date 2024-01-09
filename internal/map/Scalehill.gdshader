@@ -20,8 +20,8 @@ void vertex(){
 
 void fragment() {
     // Ustawienie skalowania i "tiling" dla normal map
-    vec2 normal_map_tiling = vec2(30, 1.0);  // Skalowanie normal map
-    vec2 albedo_tiling = vec2(30.0, 1.0);     // Tiling dla albedo
+    vec2 normal_map_tiling = vec2(25, 1.0);  // Skalowanie normal map
+    vec2 albedo_tiling = vec2(25.0, 1.0);     // Tiling dla albedo
 	
     vec2 modified_uv_normal = UV.xy * normal_map_tiling;
     vec2 modified_uv_albedo = UV.xy * albedo_tiling;

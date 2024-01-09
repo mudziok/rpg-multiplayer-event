@@ -87,7 +87,7 @@ environment = SubResource("Environment_y0a4g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera" parent="Player" index="1"]
-transform = Transform3D(-1, 5.13699e-15, -8.74228e-08, 8.59779e-09, 0.995152, -0.0983471, 8.6999e-08, -0.0983471, -0.995152, 0, 3.47478, -3)
+transform = Transform3D(-1, 6.24721e-15, -8.74228e-08, -1.65846e-09, 0.99982, 0.0189706, 8.74071e-08, 0.0189706, -0.99982, 0, 3.47478, -3)
 
 [node name="Kite" parent="Player" index="2"]
 mesh = ExtResource("2_uqonq")
