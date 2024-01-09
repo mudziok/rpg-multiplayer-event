@@ -31,7 +31,7 @@ shader_parameter/image_texture = ExtResource("6_ygh58")
 script = ExtResource("1_lk32y")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.47103, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.777605, 0)
 shape = SubResource("CylinderShape3D_ddl78")
 
 [node name="PlaceholderTree" type="MeshInstance3D" parent="."]

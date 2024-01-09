@@ -44,12 +44,14 @@ sky_material = SubResource("ShaderMaterial_r7wc5")
 [sub_resource type="Environment" id="Environment_y0a4g"]
 background_mode = 2
 sky = SubResource("Sky_rgmw4")
+sky_rotation = Vector3(0.20944, 0, 0)
 ambient_light_source = 3
 ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
 ambient_light_sky_contribution = 0.3
 ambient_light_energy = 1.69
 glow_enabled = true
-glow_intensity = 2.4
+glow_intensity = 3.48
+glow_strength = 0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_ad43w"]
 font_size = 30

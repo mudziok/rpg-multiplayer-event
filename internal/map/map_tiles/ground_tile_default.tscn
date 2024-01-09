@@ -6,8 +6,8 @@
 [ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="4_188pi"]
 [ext_resource type="Shader" path="res://internal/map/Scalehill.gdshader" id="4_nqx7b"]
 [ext_resource type="Texture2D" uid="uid://b6tsytly1tche" path="res://internal/resources/textures/snow.jpg" id="4_ruh0o"]
-[ext_resource type="Texture2D" uid="uid://bet6gq828qrgn" path="res://internal/resources/textures/ROCK AND STONE_Albedo.png" id="5_f5782"]
-[ext_resource type="Texture2D" uid="uid://cqvpx0k4y3ux7" path="res://internal/resources/textures/ROCK AND STONE_Normal.png" id="6_yxs5b"]
+[ext_resource type="Texture2D" uid="uid://dh35s46oqlly4" path="res://internal/resources/textures/Ground_Albedo.png" id="7_talth"]
+[ext_resource type="Texture2D" uid="uid://cf0p8uied5d1p" path="res://internal/resources/textures/Ground_Normal.png" id="8_n8ppg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5y5m4"]
 size = Vector3(13.1553, 41.4455, 18.956)
@@ -24,8 +24,8 @@ shader_parameter/image_texture = ExtResource("4_ruh0o")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_nqx7b")
-shader_parameter/albedo = ExtResource("5_f5782")
-shader_parameter/normal_map = ExtResource("6_yxs5b")
+shader_parameter/albedo = ExtResource("7_talth")
+shader_parameter/normal_map = ExtResource("8_n8ppg")
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdvg2"]
 
@@ -52,7 +52,7 @@ material_override = SubResource("ShaderMaterial_powd2")
 mesh = ExtResource("3_iy2sw")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 6.42103, 0, 0, 0, 1, 0, -2.961, -4.47)
+transform = Transform3D(100, 0, 0, 0, 3.88285, 0, 0, 0, 1, -0.084, -1.722, -4.455)
 material_override = SubResource("ShaderMaterial_08r62")
 mesh = SubResource("BoxMesh_pdvg2")
 

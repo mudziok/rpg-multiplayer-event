@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://wbfaseqcj0hb"]
+[gd_scene load_steps=8 format=3 uid="uid://wbfaseqcj0hb"]
 
 [ext_resource type="Script" path="res://LandMine.gd" id="1_2abjc"]
 [ext_resource type="Shader" path="res://internal/map/hill.gdshader" id="2_4axvm"]
 [ext_resource type="ArrayMesh" uid="uid://cp8usl1k3pifb" path="res://internal/resources/models/mine.obj" id="2_koxmj"]
 [ext_resource type="Texture2D" uid="uid://cqk7ris301du" path="res://internal/resources/textures/mine_DefaultMaterial_BaseMap.png" id="3_f1012"]
 [ext_resource type="Texture2D" uid="uid://cjori8mfd5yc1" path="res://internal/resources/textures/mine_DefaultMaterial_Emissive.png" id="4_vu68d"]
-[ext_resource type="Shader" path="res://internal/scenes/SkyShader.gdshader" id="6_bj3cq"]
-[ext_resource type="Texture2D" uid="uid://bgtoc8nxbqnmq" path="res://internal/Epic_BlueSunset_EquiRect_flat.png" id="7_x4imw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kuvm6"]
 size = Vector3(1, 0.285, 1)
@@ -17,31 +15,6 @@ shader = ExtResource("2_4axvm")
 shader_parameter/image_texture = ExtResource("3_f1012")
 shader_parameter/imaginne_texture_enission = ExtResource("4_vu68d")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_byvu8"]
-shader = ExtResource("6_bj3cq")
-shader_parameter/skyColor = null
-shader_parameter/horizonColor = null
-shader_parameter/skyTexture = ExtResource("7_x4imw")
-
-[sub_resource type="Sky" id="Sky_j8r5l"]
-sky_material = SubResource("ShaderMaterial_byvu8")
-
-[sub_resource type="Environment" id="Environment_5cqrp"]
-background_mode = 2
-sky = SubResource("Sky_j8r5l")
-ambient_light_source = 3
-ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
-ambient_light_sky_contribution = 0.3
-ambient_light_energy = 1.69
-glow_enabled = true
-glow_intensity = 2.64
-glow_strength = 0.2
-glow_blend_mode = 0
-glow_hdr_threshold = 0.0
-glow_hdr_scale = 0.0
-glow_hdr_luminance_cap = 18.35
-glow_map_strength = 0.3
-
 [node name="LandMine" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140722, 0)
 script = ExtResource("1_2abjc")
@@ -51,11 +24,8 @@ transform = Transform3D(1.46226, 0, 0, 0, 1.46226, 0, 0, 0, 1.46226, 0, -0.29830
 shape = SubResource("BoxShape3D_kuvm6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.60507, 0, 0, 0, 1.60507, 0, 0, 0, 1.60507, 0, -0.671715, 0)
+transform = Transform3D(1.24985, 0, 0, 0, 1.24985, 0, 0, 0, 1.24985, 0, -0.671715, 0)
 material_override = SubResource("ShaderMaterial_o03gy")
 mesh = ExtResource("2_koxmj")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5cqrp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

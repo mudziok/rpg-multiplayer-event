@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bet6gq828qrgn"
-path.s3tc="res://.godot/imported/ROCK AND STONE_Albedo.png-11e392b083b661042cb06263708d652b.s3tc.ctex"
+uid="uid://dh35s46oqlly4"
+path.s3tc="res://.godot/imported/Ground_Albedo.png-c8a542dfd1a5cecbf2b38e52f4a4f6de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://internal/resources/textures/ROCK AND STONE_Albedo.png"
-dest_files=["res://.godot/imported/ROCK AND STONE_Albedo.png-11e392b083b661042cb06263708d652b.s3tc.ctex"]
+source_file="res://internal/resources/textures/Ground_Albedo.png"
+dest_files=["res://.godot/imported/Ground_Albedo.png-c8a542dfd1a5cecbf2b38e52f4a4f6de.s3tc.ctex"]
 
 [params]
 
