@@ -38,16 +38,20 @@ shader_parameter/skyColor = null
 shader_parameter/horizonColor = null
 shader_parameter/skyTexture = ExtResource("4_tru4q")
 
-[sub_resource type="Sky" id="Sky_j8r5l"]
+[sub_resource type="Sky" id="Sky_rgmw4"]
 sky_material = SubResource("ShaderMaterial_r7wc5")
 
 [sub_resource type="Environment" id="Environment_y0a4g"]
 background_mode = 2
-sky = SubResource("Sky_j8r5l")
+sky = SubResource("Sky_rgmw4")
+sky_rotation = Vector3(0.20944, 0, 0)
 ambient_light_source = 3
 ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
 ambient_light_sky_contribution = 0.3
 ambient_light_energy = 1.69
+glow_enabled = true
+glow_intensity = 3.48
+glow_strength = 0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_ad43w"]
 font_size = 30
@@ -85,6 +89,9 @@ environment = SubResource("Environment_y0a4g")
 
 [node name="Player" parent="." instance=ExtResource("1_4yxr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera" parent="Player" index="1"]
+transform = Transform3D(-1, 6.24721e-15, -8.74228e-08, -1.65846e-09, 0.99982, 0.0189706, 8.74071e-08, 0.0189706, -0.99982, 0, 3.47478, -3)
 
 [node name="Kite" parent="Player" index="2"]
 mesh = ExtResource("2_uqonq")

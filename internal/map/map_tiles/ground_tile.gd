@@ -6,7 +6,10 @@ var obstacle_list: Array
 func load_obstacles():
 	obstacle_list.append(preload("res://internal/map/obstacles/tree_obstacle.tscn"))
 	obstacle_list.append(preload("res://internal/map/obstacles/land_mine.tscn"))
+	obstacle_list.append(preload("res://internal/map/obstacles/Rock_obstacle.tscn"))
+	obstacle_list.append(preload("res://internal/map/obstacles/Stone_obstacle.tscn"))
 	#może jest jakiś lepszy sposób na dodanie wszystkich scen z konkretnego folderu?
+	#e tam dobrze jest, mucha nie siądzie, pozdrawiam.
 
 func populate_tile(object_count:int):
 	load_obstacles()
