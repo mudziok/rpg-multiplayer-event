@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvdfds621bt0f"
-path.s3tc="res://.godot/imported/kite_highlight.png-81272bfd85b9d18ff94a2ba2b3bf3f12.s3tc.ctex"
+uid="uid://85fmqwj6mwjb"
+path.s3tc="res://.godot/imported/snowflake.png-20dc426b910d701c3e008095d68f42e7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://internal/resources/images/kite_highlight.png"
-dest_files=["res://.godot/imported/kite_highlight.png-81272bfd85b9d18ff94a2ba2b3bf3f12.s3tc.ctex"]
+source_file="res://internal/resources/images/snowflake.png"
+dest_files=["res://.godot/imported/snowflake.png-20dc426b910d701c3e008095d68f42e7.s3tc.ctex"]
 
 [params]
 
