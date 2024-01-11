@@ -1,12 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://bni63f1mm1tvg"]
+[gd_scene load_steps=40 format=3 uid="uid://bni63f1mm1tvg"]
 
 [ext_resource type="PackedScene" uid="uid://d00kxn8ke7auy" path="res://internal/player/player.tscn" id="1_4yxr6"]
 [ext_resource type="Script" path="res://internal/scenes/game.gd" id="1_6hjq6"]
 [ext_resource type="ArrayMesh" uid="uid://7b3ofxstk5jb" path="res://internal/resources/models/Kite.obj" id="2_uqonq"]
-[ext_resource type="Shader" path="res://internal/scenes/SkyShader.gdshader" id="3_001jn"]
+[ext_resource type="Texture2D" uid="uid://85fmqwj6mwjb" path="res://internal/resources/images/snowflake.png" id="3_5n2c6"]
+[ext_resource type="Script" path="res://internal/scenes/Snow.gd" id="3_pnje5"]
 [ext_resource type="PackedScene" uid="uid://bj6k2nxidjk16" path="res://internal/map/controler/map_controler.tscn" id="4_agi44"]
-[ext_resource type="Texture2D" uid="uid://bgtoc8nxbqnmq" path="res://internal/Epic_BlueSunset_EquiRect_flat.png" id="4_tru4q"]
 [ext_resource type="PackedScene" uid="uid://vitfnq6fnkod" path="res://internal/speedometer/speedometer.tscn" id="5_ee0uk"]
+[ext_resource type="Script" path="res://internal/scenes/VelocityBasedSnow.gd" id="5_lwy77"]
 [ext_resource type="AudioStream" uid="uid://bkye5ahy84y2t" path="res://internal/music/gamusic.wav" id="6_8r63h"]
 [ext_resource type="Script" path="res://internal/music/GameMusic.gd" id="7_jxs1r"]
 [ext_resource type="Script" path="res://internal/scenes/GameOverScreen.gd" id="8_8fttb"]
@@ -15,44 +16,239 @@
 [ext_resource type="AudioStream" uid="uid://b4cinvi8q24v2" path="res://external/sound/sfx/button_sounds/on_hover.wav" id="10_youon"]
 [ext_resource type="Script" path="res://internal/scenes/ColorChangeScreen.gd" id="14_ka6ck"]
 
-[sub_resource type="Gradient" id="Gradient_wqvhj"]
-colors = PackedColorArray(0.871247, 1, 0.998547, 1, 1, 1, 1, 0)
+[sub_resource type="Curve" id="Curve_stbhv"]
+_data = [Vector2(0, 0.795109), 0.0, 0.0, 0, 0, Vector2(0.195531, 0.618478), 0.0, 0.0, 0, 0, Vector2(0.416201, 0.434783), 0.0, 0.0, 0, 0, Vector2(0.614525, 0.265217), 0.0, 0.0, 0, 0, Vector2(0.824022, 0.20163), 0.0, 0.0, 0, 0, Vector2(1, 0.0179348), 0.0, 0.0, 0, 0]
+point_count = 6
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ipsv1"]
-gradient = SubResource("Gradient_wqvhj")
+[sub_resource type="CurveTexture" id="CurveTexture_uhfvc"]
+curve = SubResource("Curve_stbhv")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mhk6w"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(-2.64, -3.16, 1)
-emission_shape = 1
-emission_sphere_radius = 128.0
-initial_velocity_min = 50.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 98, 0)
-scale_min = 10.0
-scale_max = 50.0
-color_ramp = SubResource("GradientTexture1D_ipsv1")
+[sub_resource type="Curve" id="Curve_rxrfv"]
+_data = [Vector2(0.0756757, 0.0753138), 0.0, 0.0, 0, 0, Vector2(0.510811, 0.272489), 0.0, 0.0, 0, 0, Vector2(0.991892, 0.34728), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7wc5"]
-shader = ExtResource("3_001jn")
-shader_parameter/skyColor = null
-shader_parameter/horizonColor = null
-shader_parameter/skyTexture = ExtResource("4_tru4q")
+[sub_resource type="CurveTexture" id="CurveTexture_qjuxp"]
+curve = SubResource("Curve_rxrfv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13rmc"]
+emission_shape_offset = Vector3(0, 15, -4)
+emission_shape = 3
+emission_box_extents = Vector3(15, 0, 8)
+direction = Vector3(0, -1, 1)
+spread = 30.0
+initial_velocity_min = 0.25
+initial_velocity_max = 0.5
+gravity = Vector3(0, -1, 0)
+scale_min = 0.2
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_uhfvc")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0, -2, 0)
+turbulence_influence_over_life = SubResource("CurveTexture_qjuxp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnat7"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_5n2c6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7xtee"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_bnat7")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_p2nkm"]
+max_value = 3.0
+_data = [Vector2(0, 0.527473), 0.0, 0.0, 0, 0, Vector2(1, 1.05495), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ixbw"]
+curve = SubResource("Curve_p2nkm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ad5hy"]
+emission_shape_offset = Vector3(0, 0, 5)
+emission_shape_scale = Vector3(5, 3, 3)
+emission_shape = 6
+emission_ring_axis = Vector3(1, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 0, -5)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+radial_velocity_min = 1.0
+radial_velocity_max = 1.0
+gravity = Vector3(0, 0, -1)
+radial_accel_min = 0.8
+radial_accel_max = 1.0
+scale_min = 0.1
+scale_max = 0.2
+scale_over_velocity_max = 2.0
+scale_over_velocity_curve = SubResource("CurveTexture_3ixbw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks2ye"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("3_5n2c6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_44vln"]
+material = SubResource("StandardMaterial3D_ks2ye")
+flip_faces = true
+
+[sub_resource type="Shader" id="Shader_x7by5"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+
+uniform sampler2D cloud_texture;
+uniform sampler2D cloud_texture2;
+uniform vec2 cloud_direction;
+uniform vec2 cloud_direction2;
+uniform vec2 cloud_speed;
+uniform vec2 cloud_speed2;
+uniform vec2 cloud_scale;
+uniform float cloud_distance;
+
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+	
+vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+
+vec3 clouds = texture(cloud_texture, sky_uv * cloud_scale + TIME * cloud_direction * cloud_speed).rgb - texture(cloud_texture2, sky_uv * cloud_scale + TIME * cloud_direction2 * cloud_speed2).rgb;
+clouds = clouds - smoothstep(0.0, EYEDIR.y, cloud_distance);
+clouds = clamp(clouds, 0.0, 1.0); 
+sky += clouds;
+
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d6aai"]
+noise_type = 3
+seed = 69420
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_305lu"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_d6aai")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8l33t"]
+noise_type = 3
+seed = 69420
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_do6f6"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_8l33t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wn5u2"]
+shader = SubResource("Shader_x7by5")
+shader_parameter/sky_top_color = Color(0.380392, 0.541176, 0.890196, 1)
+shader_parameter/sky_horizon_color = Color(0.364706, 0.627451, 0.894118, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.364706, 0.627451, 0.894118, 1)
+shader_parameter/ground_horizon_color = Color(0.364706, 0.627451, 0.894118, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 30.0
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction = Vector2(0, 0)
+shader_parameter/cloud_direction2 = Vector2(0.01, 0.01)
+shader_parameter/cloud_speed = Vector2(0.01, 1)
+shader_parameter/cloud_speed2 = Vector2(0.1, 1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = 0.04
+shader_parameter/cloud_texture = SubResource("NoiseTexture2D_305lu")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_do6f6")
 
 [sub_resource type="Sky" id="Sky_rgmw4"]
-sky_material = SubResource("ShaderMaterial_r7wc5")
+sky_material = SubResource("ShaderMaterial_wn5u2")
 
 [sub_resource type="Environment" id="Environment_y0a4g"]
 background_mode = 2
 sky = SubResource("Sky_rgmw4")
 sky_rotation = Vector3(0.20944, 0, 0)
 ambient_light_source = 3
-ambient_light_color = Color(0.85098, 0.87451, 0.882353, 1)
-ambient_light_sky_contribution = 0.3
-ambient_light_energy = 1.69
+ambient_light_color = Color(0.607843, 0.772549, 0.827451, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 0.9
 glow_enabled = true
 glow_intensity = 3.48
 glow_strength = 0.3
+fog_enabled = true
+fog_light_color = Color(0.152941, 0.427451, 0.576471, 1)
+fog_density = 0.03
 
 [sub_resource type="LabelSettings" id="LabelSettings_ad43w"]
 font_size = 30
@@ -72,21 +268,35 @@ script = ExtResource("1_6hjq6")
 [node name="map_controler" parent="." instance=ExtResource("4_agi44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095974, -0.0436711, -0.0807743)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-show_behind_parent = true
-position = Vector2(569, 326)
-scale = Vector2(5.96, 3.48)
-amount = 100
-amount_ratio = 0.4573
-process_material = SubResource("ParticleProcessMaterial_mhk6w")
-lifetime = 2.0
-speed_scale = 2.0
-randomness = 1.0
+[node name="SnowFromTop" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.999994, -0.00324251, -0.00105942, -0.00324009, 0.999992, -0.00228456, 0.00106682, -0.00228111, -0.999997, -0.0248132, 3.76297, -0.00939941)
+cast_shadow = 0
+amount = 1000
+lifetime = 15.0
+preprocess = 10.0
+randomness = 0.5
 collision_base_size = 0.0
-trail_lifetime = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_13rmc")
+draw_pass_1 = SubResource("PlaneMesh_7xtee")
+script = ExtResource("3_pnje5")
+
+[node name="VelocityBasedSnow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142574, 4.52451, -3.04144)
+amount = 200
+lifetime = 1.5
+preprocess = 0.5
+process_material = SubResource("ParticleProcessMaterial_ad5hy")
+draw_pass_1 = SubResource("QuadMesh_44vln")
+script = ExtResource("5_lwy77")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y0a4g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.92521, 0.379456, 0, -0.379456, -0.92521, 0, 0, 0)
+light_color = Color(0.992157, 0.992157, 0.992157, 1)
+light_energy = 0.623
 
 [node name="Player" parent="." instance=ExtResource("1_4yxr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -41,7 +41,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxFlat_6dp4e")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vmmq5")
 bbcode_enabled = true
-text = "[center][b][font_size=30]Great 007 game title[/font_size][/b]
+text = "[center][b][font_size=30]KITE SLIDER[/font_size][/b]
 
 [b]Day 1[/b]
 Wovri - template menu system
@@ -55,7 +55,10 @@ SHAMOTTE - HILLSIDE GENERATOR
 [color=8017b2]Gahlammon had amazing time[color=white]
 
 [b]Day 5[/b]
-Nesia - ez snow master"
+Nesia - ez snow master
+
+[b]Day 11.01[/b]
+Sodment - The guys/gals here are Cunts"
 scroll_following = true
 selection_enabled = true
 
