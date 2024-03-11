@@ -33,3 +33,5 @@ Projektując event zakładałem że każdy włoży w projekt tak z 3-4 godziny a
 ### Kalendarz
 
 ![kalendarz z datami do których pipisani są uczestnicy evetu](CALENDAR.png)
+
+zmiana w innym pliku
